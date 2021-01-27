@@ -1,6 +1,6 @@
+//check this video to know about the whole things "https://youtu.be/MgeBmY0K36Q"
 #include <Wire.h>
-#include <Adafruit_MLX90614.h>
-//Created By Rohan Barnwal                                                                                                                                                                                                                                                                                                                    //Created By Rohan Barnwal
+#include <Adafruit_MLX90614.h>                                                                                                                                                                                                                                                                                                                  //Created By Rohan Barnwal
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
@@ -8,13 +8,13 @@ BlynkTimer timer;
 char auth[] = "613r1JkkTLLrrEhLRn9apr-b0wv0AS_4"; //Auth code sent via Email
 char ssid[] = "Rohan"; //Wifi name
 char pass[] = "rohanbarnwal";  //Wifi Password
-Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();//Making a variable mlx
 void notifyOnThings(){
-  if(mlx.readObjectTempC()< 37 && mlx.readObjectTempC()>33)
+  if(mlx.readObjectTempC()< 37 && mlx.readObjectTempC()>33)//mlxreadObjectTempC means the reading of Object Temperature
   { 
     digitalWrite(D4,HIGH);
     digitalWrite(D3,LOW);
-     Blynk.notify( "कोई दिक्कत नहीं है" );
+     Blynk.notify( "कोई दिक्कत नहीं है" );//Notification when temperature is normal
   
       
   }
@@ -23,7 +23,7 @@ void notifyOnThings(){
   else if(mlx.readObjectTempC()>38) {
        digitalWrite(D3,HIGH);
        digitalWrite(D4,LOW);
-    Blynk.notify("सतर्कता बनाए रखे");
+    Blynk.notify("सतर्कता बनाए रखे");//Notification when temperature is high
         
   
   }
@@ -36,8 +36,8 @@ void notifyOnThings(){
 }
 
 void setup() {
-  Serial.begin(9600);
-Serial.begin(9600);
+  
+Serial.begin(9600);//Serial Monitor means a monitor from where you can read the values
 Blynk.begin(auth, ssid, pass); 
 pinMode(D4,OUTPUT);
 pinMode(D3,OUTPUT);
@@ -48,8 +48,7 @@ timer.setInterval(50L,notifyOnThings);
 }
 
 void loop() {
-  Serial.print("Ambient = "); 
-  Serial.print(mlx.readAmbientTempC()); 
+  
   Serial.print("*C\tObject = "); 
   Serial.print(mlx.readObjectTempC()); Serial.println("*C");
 
@@ -60,9 +59,6 @@ void loop() {
   timer.run();
 }
 
-//Created By Rohan Barnwal
-//Created By Rohan Barnwal
-//Created By Rohan Barnwal
 //Created By Rohan Barnwal
 
   

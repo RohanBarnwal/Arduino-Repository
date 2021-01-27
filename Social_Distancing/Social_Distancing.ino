@@ -1,3 +1,4 @@
+// check this video to know about the whole things "https://youtu.be/I1eslCUz3d4"
 //Created By Rohan Barnwal
 // defines pins numbers
 const int trigPin = 2;
