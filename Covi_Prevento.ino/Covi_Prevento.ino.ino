@@ -1,13 +1,12 @@
-//check this video to know about the whole things "https://youtu.be/MgeBmY0K36Q"
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>                                                                                                                                                                                                                                                                                                                  //Created By Rohan Barnwal
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 BlynkTimer timer;
-char auth[] = "613r1JkkTLLrrEhLRn9apr-b0wv0AS_4"; //Auth code sent via Email
+char auth[] = "kb1Za91DbYpD0tGysNe5jKaHm_Toxj5m"; //Auth code sent via Email
 char ssid[] = "Rohan"; //Wifi name
-char pass[] = "rohanbarnwal";  //Wifi Password
+char pass[] = "1234567890";  //Wifi Password
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();//Making a variable mlx
 void notifyOnThings(){
   if(mlx.readObjectTempC()< 37 && mlx.readObjectTempC()>33)//mlxreadObjectTempC means the reading of Object Temperature
@@ -60,5 +59,3 @@ void loop() {
 }
 
 //Created By Rohan Barnwal
-
-  
