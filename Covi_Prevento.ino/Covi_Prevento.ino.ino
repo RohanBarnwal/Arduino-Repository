@@ -9,7 +9,7 @@ char ssid[] = "Rohan"; //Wifi name
 char pass[] = "1234567890";  //Wifi Password
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();//Making a variable mlx
 void notifyOnThings(){
-  if(mlx.readObjectTempC()< 37 && mlx.readObjectTempC()>33)//mlxreadObjectTempC means the reading of Object Temperature
+  if(mlx.readObjectTempC()< 37 && mlx.readObjectTempC()>33  )//mlxreadObjectTempC means the reading of Object Temperature
   { 
     digitalWrite(D4,HIGH);
     digitalWrite(D3,LOW);
@@ -40,7 +40,7 @@ Serial.begin(9600);//Serial Monitor means a monitor from where you can read the 
 Blynk.begin(auth, ssid, pass); 
 pinMode(D4,OUTPUT);
 pinMode(D3,OUTPUT);
-timer.setInterval(50L,notifyOnThings); 
+timer.setInterval(1L,notifyOnThings); 
   Serial.println("Adafruit MLX90614 test");  
 
   mlx.begin();  
