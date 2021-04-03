@@ -13,8 +13,8 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 LcdBarGraph lbg(&lcd, 16, 0, 1); // Creates an LCD Bargraph object.
 
-const int trigPin = 9;
-const int echoPin = 10;
+const int trigPin = 12;
+const int echoPin = 13;
 long duration;
 int distance;
 int distance1;
@@ -22,7 +22,7 @@ int speakerPin = 8;
 void setup() 
 {
   lcd.begin(16,2); // Initializes the interface to the LCD screen
-  
+  Serial.begin(9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 }
@@ -56,7 +56,7 @@ void loop()
   lcd.print("HEIGHT: ");
   lcd.print(distance1);
   lcd.print("  cm  ");
-
+ Serial.println(distance1);
   // Draws bargraph on the second line of the LCD
   lcd.setCursor(0,1);
   lbg.drawValue(distance1, max_distance);

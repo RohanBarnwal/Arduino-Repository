@@ -7,8 +7,8 @@
 */
 #include <LiquidCrystal.h> // includes the LiquidCrystal Library
 LiquidCrystal lcd(1, 2, 4, 5, 6, 7); // Creates an LCD object. Parameters: (rs, enable, d4, d5, d6, d7)
-const int trigPin = 9;
-const int echoPin = 10;
+const int trigPin = 10;
+const int echoPin = 9;
 long duration;
 int distanceCm, distanceInch;
 void setup() {
