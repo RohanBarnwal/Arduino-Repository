@@ -9,7 +9,7 @@ pinMode(11,OUTPUT);   //right motors forward
 pinMode(10,OUTPUT);   //right motors reverse
 }
 void loop(){
-distance=ultrasonic.read;
+distance= ultrasonic.read;
 Serial.print(distance);
 if(Serial.available()){
   t = Serial.read();
