@@ -92,6 +92,7 @@ else if(t == 'R'){      //turn left (right side motors rotate in forward directi
   digitalWrite(32,LOW);
   digitalWrite(34,HIGH);//Right Indicator 
    digitalWrite(25,HIGH);//Right Indicator 
+   return;
   
   
   
