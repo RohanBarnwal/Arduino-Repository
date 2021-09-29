@@ -18,13 +18,10 @@
 
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
-#include <LiquidCrystal.h>
-Adafruit_MLX90614 mlx = Adafruit_MLX90614();
-LiquidCrystal lcd(12,11,5,4,3,2);
+
 void setup() {
   Serial.begin(9600);
-lcd.begin(16,2);
-  Serial.println("Adafruit MLX90614 test");  
+ 
 
   mlx.begin();  
 }
@@ -32,15 +29,7 @@ lcd.begin(16,2);
 void loop() {
   Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC()); 
   Serial.print("*C\tObject = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
-  Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempF()); 
-  Serial.print("*F\tObject = "); Serial.print(mlx.readObjectTempF()); Serial.println("*F");
-lcd.setCursor(0,0);
-lcd.print("TempA:- ");
-lcd.print(mlx.readAmbientTempC());lcd.print("*C");
-lcd.setCursor(0,1);
-lcd.print("TempO:- ");
-lcd.print(mlx.readObjectTempC());lcd.print("*C");
 
-  Serial.println();
+
   
 }
