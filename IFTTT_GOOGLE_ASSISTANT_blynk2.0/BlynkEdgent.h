@@ -135,46 +135,5 @@ void manual_control()
     SwitchState_1 = 0;
     Serial.println("Switch-1 off");
   }
-  if (digitalRead(SwitchPin2) == LOW && SwitchState_2 == LOW) {
-    digitalWrite(RelayPin2, LOW);
-    Blynk.virtualWrite(VPIN_BUTTON_2, HIGH);
-    toggleState_2 = HIGH;
-    SwitchState_2 = HIGH;
-    Serial.println("Switch-2 on");
-  }
-  if (digitalRead(SwitchPin2) == HIGH && SwitchState_2 == HIGH) {
-    digitalWrite(RelayPin2, HIGH);
-    Blynk.virtualWrite(VPIN_BUTTON_2, LOW);
-    toggleState_2 = LOW;
-    SwitchState_2 = LOW;
-    Serial.println("Switch-2 off");
-  }
-  if (digitalRead(SwitchPin3) == LOW && SwitchState_3 == LOW) {
-    digitalWrite(RelayPin3, LOW);
-    Blynk.virtualWrite(VPIN_BUTTON_3, HIGH);
-    toggleState_3 = HIGH;
-    SwitchState_3 = HIGH;
-    Serial.println("Switch-3 on");
-  }
-  if (digitalRead(SwitchPin3) == HIGH && SwitchState_3 == HIGH) {
-    digitalWrite(RelayPin3, HIGH);
-    Blynk.virtualWrite(VPIN_BUTTON_3, LOW);
-    toggleState_3 = LOW;
-    SwitchState_3 = LOW;
-    Serial.println("Switch-3 off");
-  }
-  if (digitalRead(SwitchPin4) == LOW && SwitchState_4 == LOW) {
-    digitalWrite(RelayPin4, LOW);
-    Blynk.virtualWrite(VPIN_BUTTON_4, HIGH);
-    toggleState_4 = HIGH;
-    SwitchState_4 = HIGH;
-    Serial.println("Switch-4 on");
-  }
-  if (digitalRead(SwitchPin4) == HIGH && SwitchState_4 == HIGH) {
-    digitalWrite(RelayPin4, HIGH);
-    Blynk.virtualWrite(VPIN_BUTTON_4, LOW);
-    toggleState_4 = LOW;
-    SwitchState_4 = LOW;
-    Serial.println("Switch-4 off");
-  }
+
 }

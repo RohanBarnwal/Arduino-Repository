@@ -14,8 +14,9 @@
  **********************************************************************************/
 
 // Fill-in information from your Blynk Template here
-#define BLYNK_TEMPLATE_ID "TMPLJ3CIBceD"
-#define BLYNK_DEVICE_NAME "yrfkkjgglhk"
+#define BLYNK_TEMPLATE_ID "TMPL0Zv_ZU6w"
+#define BLYNK_DEVICE_NAME "Patakha Phodo"
+
 #define BLYNK_FIRMWARE_VERSION        "0.1.0"
 
 #define BLYNK_PRINT Serial
