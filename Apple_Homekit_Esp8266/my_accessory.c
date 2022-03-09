@@ -1,10 +1,3 @@
-/*
- * my_accessory.c
- * Define the accessory in C language using the Macro in characteristics.h
- *
- *  Created on: 2020-05-15
- *      Author: Mixiaoxiao (Wang Bin)
- */
 
 #include <homekit/homekit.h>
 #include <homekit/characteristics.h>
