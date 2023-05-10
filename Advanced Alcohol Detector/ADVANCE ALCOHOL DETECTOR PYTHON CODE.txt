@@ -1,0 +1,50 @@
+import serial
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+
+# serial communication port should be changed according to your own Board's COM port 
+ser = serial.Serial('COM9', 9600)
+
+# email configuration
+email = "    " #here we have to add sender's email address
+password = "   " #here we have to add sender's email address password
+recipients = "    " #here we have to add reciever's address 
+
+def send_email(subject, message, attachment=None):
+    msg = MIMEMultipart()
+    msg['From'] = email
+    msg['To'] = ", ".join(recipients)
+    msg['Subject'] = subject
+    msg.attach(MIMEText(message))
+
+    if attachment:
+        attachment_file = open(attachment, 'rb')
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload((attachment_file).read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition', "attachment; filename= %s" % attachment)
+        msg.attach(part)
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(email, password)
+    text = msg.as_string()
+    server.sendmail(email, recipients, text)
+    server.quit()
+    print("Email sent successfully")
+
+def main():
+    sent_email = False
+    while True:
+        if not sent_email and ser.in_waiting > 0:
+            data = ser.readline().decode().strip()
+            if "MQ3 value" in data:
+                message = f"{data}\n\n DRIVER FOUND OVERDRUNKED \n CAR OWNER: XYZ \n CONTACT:1234567890 \nCHASSIS NO. 1423********"
+                send_email("MQ3 and GPS Data", message)
+                sent_email = True
+
+if __name__ == '__main__':
+    main()

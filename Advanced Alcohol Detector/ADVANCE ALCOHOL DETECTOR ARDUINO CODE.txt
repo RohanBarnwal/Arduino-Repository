@@ -1,0 +1,84 @@
+#include <SoftwareSerial.h>
+#include <TinyGPS++.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+SoftwareSerial GPS_serial(10, 11);
+TinyGPSPlus GPS;
+
+const int MQ3Pin = A0;
+const float threshold = 400.0;  // change this to your desired threshold value
+const int buzzerPin = 8;
+const int ledPin = 7;
+
+Adafruit_SSD1306 display(128, 32, &Wire, -1);
+
+void setup() {
+  Serial.begin(9600);
+  GPS_serial.begin(9600);
+
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(WHITE);
+  display.setCursor(0,0);
+  display.println("80 km/h");
+  display.display();
+}
+
+void loop() {
+  // read MQ-3 sensor value
+  float MQ3Value = analogRead(MQ3Pin);
+   while (GPS_serial.available() > 0) {
+      if (GPS.encode(GPS_serial.read())) {
+        if (GPS.location.isValid()) {
+          // show decreasing speed on OLED display
+          
+          // blink LED and buzzer
+        
+        }
+
+  if (MQ3Value > threshold) {
+    for (int speed = 80; speed >= 0; speed--) {
+      digitalWrite(ledPin, HIGH);
+      digitalWrite(buzzerPin, HIGH);
+      delay(50);
+      digitalWrite(ledPin, LOW);
+      digitalWrite(buzzerPin, LOW);
+      delay(50);
+      display.clearDisplay();
+      display.setCursor(0, 0);
+      display.print(speed);
+      display.print(" km/h");
+      display.display();
+      delay(50);
+      
+      if (speed == 0) {
+        Serial.print("MQ3 value: ");
+        Serial.print(MQ3Value);
+        Serial.print(", GPS location: ");
+        Serial.print(GPS.location.lat(), 6);
+        Serial.print(",");
+        Serial.print(GPS.location.lng(), 6);
+        Serial.println();
+        
+        while (true) {
+          digitalWrite(ledPin, HIGH);
+          digitalWrite(buzzerPin, HIGH);
+          delay(100);
+          digitalWrite(ledPin, LOW);
+          digitalWrite(buzzerPin, LOW);
+          delay(100);
+        }
+      }
+    }
+    
+    // get current GPS location
+   
+      }
+    }
+  }
+}
