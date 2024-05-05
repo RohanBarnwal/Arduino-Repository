@@ -8,7 +8,7 @@ const char* password = "<YOUR-PASSWD>";
 uint8_t connection_state = 0;
 uint16_t reconnect_interval = 10000;
 
-EMailSender emailSend("rohanbarnwal08@gmail.com", "<YOUR-SENDER-PASSWORD>");
+EMailSender emailSend("<YOUR SENDER EMAIL ADDRESS>", "<YOUR-SENDER-PASSWORD>");
 
 uint8_t WiFiConnect(const char* nSSID = nullptr, const char* nPassword = nullptr)
 {
@@ -65,7 +65,7 @@ void setup()
     message.subject = "Subject";
     message.message = "Hello, World!";
 
-    EMailSender::Response resp = emailSend.send("arduinoboy82005@gmail.com", message);
+    EMailSender::Response resp = emailSend.send("<RECIEVERS EMAIL ADDRESS>", message);
 
     Serial.println("Sending status: ");
     Serial.println(resp.status);
